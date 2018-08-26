@@ -2,6 +2,7 @@
     "name": "adamjedlicka/laradock",
     "description": "Artisan commands for Laradock",
     "type": "library",
+    "version": "0.1.0",
     "require": {
         "php": "^7.1",
         "laravel/framework": "5.5.*"
