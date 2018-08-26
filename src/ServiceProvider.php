@@ -28,13 +28,11 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(Kernel $kernel)
     {
-        $this->publishes([
-            __DIR__ . '/../config/laradock.php' => config_path('laradock.php'),
+        $this->commands([
+            LaradockInstall::class,
+            LaradockUp::class,
+            LaradockEnv::class,
+            LaradockDown::class,
         ]);
-
-        $kernel->registerCommand(new LaradockInstall);
-        $kernel->registerCommand(new LaradockUp);
-        $kernel->registerCommand(new LaradockDown);
-        $kernel->registerCommand(new LaradockEnv);
     }
 }
