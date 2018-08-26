@@ -1,0 +1,28 @@
+{
+    "name": "adamjedlicka/laradock",
+    "description": "Artisan commands for Laradock",
+    "type": "library",
+    "require": {
+        "php": "^7.1",
+        "laravel/framework": "5.5.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adam Jedlička",
+            "email": "adajedlicka@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AdamJedlicka\\Laradock\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AdamJedlicka\\Laradock\\ServiceProvider"
+            ]
+        }
+    }
+}
