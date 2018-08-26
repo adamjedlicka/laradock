@@ -35,15 +35,36 @@ class Command extends BaseCommand
      */
     protected function exec($cmd, $cwd = null) : int
     {
+        // Convert the command into string if it's in array
         if (!is_string($cmd)) $cmd = implode(' ', $cmd);
 
         $this->info("$ $cmd");
 
         $this->process = new Process($cmd, $cwd);
 
+        $this->tryTty();
+
+        // If TTY is enabled simply run the command.
+        if ($this->isTty) return $this->process->run();
+
+        // In nonTTY mode hight timeout is required because some advanced output is not displayed.
+        $this->process->setTimeout(3600);
+        $this->process->setIdleTimeout(300);
+
+        // Run the process and print out the output
         return $this->process->run(function ($type, $data) {
             $this->output->write($data);
         });
+    }
+
+    protected function tryTty()
+    {
+        try {
+            $this->process->setTty(true);
+            $this->isTty = true;
+        } catch (RuntimeException $e) {
+            $this->error('TTY not enabled. Running in default mode...');
+        }
     }
 
     protected function checkInstallation()
