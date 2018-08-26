@@ -8,7 +8,7 @@ return [
 
     'containers' => [
         'nginx',
-        'mysql',
+        'postgres',
         'redis',
         'workspace',
     ]
