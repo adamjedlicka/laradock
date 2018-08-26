@@ -7,7 +7,7 @@ return [
     'version' => 'v7.5.0',
 
     'containers' => [
-        'apache2',
+        'nginx',
         'mysql',
         'redis',
         'workspace',
